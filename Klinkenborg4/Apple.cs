@@ -5,9 +5,13 @@ namespace AppStoreNS
 {
     public class Apple : AppStore
     {
-        public Apple() : base() 
+        public Apple(int numberOfApps) : base(numberOfApps) 
         { 
-
+            numberOfApps = 4;
+            Apps.Add(new App("Final Cut Pro", 54, 3));
+            Apps.Add(new App("Logic Pro", 50, 4));
+            Apps.Add(new App("MainStage", 46, 5));
+            Apps.Add(new App("Pixelmator Pro", 57, 2));
         }
         
         public Apple(int numberOfApps, List<App> apps) : base(numberOfApps) 
@@ -17,58 +21,35 @@ namespace AppStoreNS
                 base.Apps.Add(apps[i]);
             }
         }
-        
-        public Apple(Apple apple) : base(apple) 
-        { 
-
-        }
 
         protected override void WelcomeToStore()
         {
             Console.WriteLine("Welcome to Apple AppStore!");
         }
-
-        protected override void SelectApp()
-        {
-            Console.WriteLine("Available apps:");
-            foreach (var app in Apps)
-            {
-                Console.WriteLine($"- {app.Name} (${app.Price}) [{app.Available} in stock]");
-            }
-        }
         
         protected override void PayForApp()
         {
-            Console.WriteLine($"Apple accepts $10, $5, $1");
-
-            int amountPaid = 0;
-            decimal change = 0;
-            Console.Write($"Enter the quantity of $10 bills: ");
-            int tens = int.Parse(Console.ReadLine());
-            amountPaid += tens * 10;
-            Console.Write($"Enter the quantity of $5 bills: ");
-            int fives = int.Parse(Console.ReadLine());
-            amountPaid += fives * 5;
-            Console.Write($"Enter the quantity of $1 bills: ");
-            int ones = int.Parse(Console.ReadLine());
-            amountPaid += ones;
-            change = amountPaid - price;
-
-            if (change >= 0)
+            Console.WriteLine("AppleStore accepts $10, $5, $1");
+            Console.WriteLine("Please enter the quantity of each payment value:");
+            Console.Write("$20 bills: ");
+            int twenty = int.Parse(Console.ReadLine());
+            Console.Write("$10 bills: ");
+            int ten = int.Parse(Console.ReadLine());
+            int totalPaid = twenty * 20 + ten * 10;
+            while (totalPaid < 0 || totalPaid < Apps.Last().Price)
             {
-                ReturnChange(change);
+                Console.WriteLine("Insufficient payment. Please enter more money.");
+                Console.Write("$20 bills: ");
+                twenty = int.Parse(Console.ReadLine());
+                Console.Write("$10 bills: ");
+                ten = int.Parse(Console.ReadLine());
+                totalPaid = twenty * 20 + ten * 10;
             }
-            else
-            {
-                Console.WriteLine($"Insufficient funds. Please pay ${price}.");
-                PayForApp(price);
-            }
-        }
-        
-        protected override void ReturnChange()
-        {
-
+            int changeDue = totalPaid - Apps.Last().Price;
+            Console.WriteLine($"Change due: ${changeDue}");
+            Apps[Selected].Available--;
         }
     }
 }
+
            

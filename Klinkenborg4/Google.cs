@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace AppStoreNS
 {
-    public class Google : AppStore
+    /*public class Google : AppStore
     {
         public Google() : base() 
         { 
@@ -28,22 +28,9 @@ namespace AppStoreNS
             Console.WriteLine("Welcome to Google AppStore!");
         }
         
-        protected override void SelectApp()
-        {
-            Console.WriteLine("Available apps:");
-            foreach (var app in Apps)
-            {
-                Console.WriteLine($"- {app.Name} (${app.Price}) [{app.Available} in stock]");
-            }
-        }
-        
-        protected override void PayForApp()
-        {
-
-        }
-        
         protected override void ReturnChange()
         {
+            decmial change = 0.0;
             Console.WriteLine($"Google returns:");
             int tens = (int)(change / 10);
             Console.WriteLine($"{tens} $10 bill(s)");
@@ -55,4 +42,5 @@ namespace AppStoreNS
             Console.WriteLine($"{ones} $1 bill(s)");
         }
     }
+    */
 }

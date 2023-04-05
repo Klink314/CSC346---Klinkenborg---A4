@@ -23,6 +23,7 @@ namespace AppStoreNS
         
         public void PurchaseApp()
         {
+            
 
         }
         
@@ -49,6 +50,7 @@ namespace AppStoreNS
         
         protected virtual void PayForApp() 
         { 
+            Console.WriteLine("AppStore accepts $20, $10");
             Console.WriteLine("Please enter the quantity of each payment value:");
             Console.Write("$20 bills: ");
             int twenty = int.Parse(Console.ReadLine());
@@ -64,19 +66,26 @@ namespace AppStoreNS
                 ten = int.Parse(Console.ReadLine());
                 totalPaid = twenty * 20 + ten * 10;
             }
-            int changeDue = totalPaid - Apps.Last().Price;
-            Console.WriteLine($"Change due: ${changeDue}");
+            int Paid = totalPaid - Apps.Last().Price;
+            Console.WriteLine($"Change due: ${Paid}");
             Apps[Selected].Available--;
         }
         
         protected virtual void ReturnChange() 
         {
             Console.WriteLine("AppStore returns $10, $1");
+            int tens = Paid % 10;
+            Paid = Paid - (tens*10);
+            Console.WriteLine("$10 bills: ", tens);
+            int ones = Paid % 1;
+            Paid = Paid - (ones);
+            Console.WriteLine("$1 bills: ", ones);
         }
 
         protected virtual void DownloadApp()
         {
             Console.WriteLine("Downloading {app.Name}...");
+            Console.WriteLine("Thank you for using the app store!");
         }
     }
 }
