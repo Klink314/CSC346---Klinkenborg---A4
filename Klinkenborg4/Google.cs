@@ -1,3 +1,12 @@
+/********************************************************************
+*** NAME : Keenan Klinkenborg   
+*** CLASS : CSC 346 ***
+*** ASSIGNMENT : Assignment 4
+*** DUE DATE : 4/3/23
+*** INSTRUCTOR : GAMRADT ***
+*********************************************************************
+*** DESCRIPTION : This Program will run two forms of app stores that a user can choose from
+********************************************************************/
 using System;
 using System.Collections.Generic;
 
