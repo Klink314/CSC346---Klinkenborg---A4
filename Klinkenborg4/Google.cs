@@ -30,16 +30,19 @@ namespace AppStoreNS
         
         protected override void ReturnChange()
         {
-            int change = 0;
-            Console.WriteLine($"Google returns:");
-            int tens = (int)(change / 10);
-            Console.WriteLine($"{tens} $10 bill(s)");
-            change %= 10;
-            int fives = (int)(change / 5);
-            Console.WriteLine($"{fives} $5 bill(s)");
-            change %= 5;
-            int ones = (int)change;
-            Console.WriteLine($"{ones} $1 bill(s)");
+            int change = Paid - Apps[Selected].Price;
+            int [] possibleChange = {5, 2, 1};
+            int [] changeGiven = new int [possibleChange.Length];
+            for (int i = 0; i < possibleChange.Length; i++)
+            {
+                changeGiven [i] = change / possibleChange[i];
+                change %= possibleChange[i];
+            }
+            Console.WriteLine("Giving change...\n\n");
+            for (int i = 0; i < possibleChange.Length; i++)
+            {
+                Console.WriteLine($"${possibleChange[i]}: {changeGiven[i]}");
+            }
         }
     }
 }

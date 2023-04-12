@@ -26,25 +26,30 @@ namespace AppStoreNS
         
         protected override void PayForApp()
         {
-            Console.WriteLine("AppleStore accepts $10, $5, $1");
-            Console.WriteLine("Please enter the quantity of each payment value:");
-            Console.Write("$20 bills: ");
-            int twenty = int.Parse(Console.ReadLine());
-            Console.Write("$10 bills: ");
-            int ten = int.Parse(Console.ReadLine());
-            int totalPaid = twenty * 20 + ten * 10;
-            while (totalPaid < 0 || totalPaid < Apps.Last().Price)
+            int payment = 0; 
+            int[] bills = {10, 5, 1};
+            int numberBills = 0;
+            bool accepted = false;
+            Console.WriteLine ("The Apple Appstore accepts $10, $5 and $1 bills.");
+            do
             {
-                Console.WriteLine("Insufficient payment. Please enter more money.");
-                Console.Write("$20 bills: ");
-                twenty = int.Parse(Console.ReadLine());
-                Console.Write("$10 bills: ");
-                ten = int.Parse(Console.ReadLine());
-                totalPaid = twenty * 20 + ten * 10;
-            }
-            int changeDue = totalPaid - Apps.Last().Price;
-            Console.WriteLine($"Change due: ${changeDue}");
-            Apps[Selected].Available--;
+                payment = 0;
+                for (int i = 0; i < bills.Length; i++)
+                {
+                    do
+                    {
+                        Console.WriteLine($"Enter the amount of ${bills[i]} bills: ");
+                        accepted = int.TryParse(Console.ReadLine(), out numberBills);
+                    } while (!accepted);
+                    payment += bills[i] * numberBills;
+                }
+                if (payment < Apps[Selected].Price)
+                {
+                    Console.WriteLine("Insufficient funds. Please try entering the correct amount again.");
+                    Console.WriteLine("Make sure to enter enough to cover the cost of the app.");
+                }
+            } while(payment < Apps[Selected].Price);
+            Paid = payment;
         }
     }
 }
