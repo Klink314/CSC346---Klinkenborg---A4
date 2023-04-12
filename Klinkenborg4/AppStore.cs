@@ -92,7 +92,7 @@ namespace AppStoreNS
                 changeGiven [i] = change / possibleChange[i];
                 change %= possibleChange[i];
             }
-            Console.WriteLine("Giving change...\n");
+            Console.WriteLine("Giving change...");
             for (int i = 0; i < possibleChange.Length; i++)
             {
                 Console.WriteLine($"{possibleChange[i]}: {changeGiven[i]}");
@@ -102,7 +102,8 @@ namespace AppStoreNS
         protected virtual void DownloadApp()
         {
             Console.WriteLine("Proper payment has been made, thank you!");
-            Console.WriteLine("Downloading {app.Name}...");
+            Console.WriteLine("Downloading your selected app...");
+            Console.WriteLine("Download complete.");
             Console.WriteLine("Thank you for using the app store!");
         }
     }
