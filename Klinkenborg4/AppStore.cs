@@ -6,8 +6,8 @@ namespace AppStoreNS
     public abstract class AppStore
     {
         protected List<App> Apps { get; set; } = new List<App>();
-        protected int Selected;
-        protected int Paid;
+        protected int Selected { get; set; }
+        protected int Paid { get; set; }
 
         public AppStore(int numberOfApps = 0)
         {
@@ -23,8 +23,12 @@ namespace AppStoreNS
         
         public void PurchaseApp()
         {
-            
-
+            Selected = 0;
+            WelcomeToStore();
+            SelectApp();
+            PayForApp();
+            ReturnChange();
+            DownloadApp();
         }
         
         protected abstract void WelcomeToStore();
@@ -84,6 +88,7 @@ namespace AppStoreNS
 
         protected virtual void DownloadApp()
         {
+            Console.Writeline("Proper payment has been made, thank you!")
             Console.WriteLine("Downloading {app.Name}...");
             Console.WriteLine("Thank you for using the app store!");
         }

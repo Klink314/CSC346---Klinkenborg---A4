@@ -2,8 +2,8 @@ namespace AppStoreNS
 {
     public class App
     {
-        public string Name { get; set; }
-        public int Price { get; set; }
+        public string Name { get; private set; }
+        public int Price { get; private set; }
         public int Available { get; set; }
 
         public App(string name = "", int price = 0, int available = 0)
