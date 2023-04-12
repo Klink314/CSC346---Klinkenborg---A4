@@ -5,11 +5,18 @@ namespace AppStoreNS
 {
     public class Apple : AppStore
     {
-        public Apple (List <App>? app = null, int selected = 0, int paid = 0) : base (app, selected, paid)
+        public Apple (int selected = 0, int paid = 0) : base (selected, paid)
         {
-            Apps = app ?? new List <App>();
             Selected = selected;
             Paid = paid;
+            Apps = new List<App>
+            {
+                new App("Final Cut Pro", 54, 3),
+                new App("Logic Pro", 50, 4),
+                new App("MainStage", 46, 5),
+                new App("Pixelmator Pro", 57, 2)
+            };
+            
         }
         
         private Apple (Apple other)
@@ -49,6 +56,7 @@ namespace AppStoreNS
                     Console.WriteLine("Make sure to enter enough to cover the cost of the app.");
                 }
             } while(payment < Apps[Selected].Price);
+            Apps[Selected].Available--;
             Paid = payment;
         }
     }

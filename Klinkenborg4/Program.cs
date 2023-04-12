@@ -6,21 +6,8 @@
         {
             int userChoice;
             bool finished = false;
-            List <App> appleApps = new List<App>
-            {
-                new App("Final Cut Pro", 54, 3),
-                new App("Logic Pro", 50, 4),
-                new App("MainStage", 46, 5),
-                new App("Pixelmator Pro", 57, 2)
-            };
-            Apple appleStore = new Apple (appleApps);
-            List <App> googleApps = new List <App>
-            {
-                new App("Cubasis 3", 46, 3),
-                new App("FL Studio Mobile", 50, 5),
-                new App("LumaFusion Pro", 57, 1)
-            };
-            Google googleStore = new Google (googleApps);
+            Apple appleStore = new Apple ();
+            Google googleStore = new Google ();
             do
             {
                 Console.WriteLine("Please make a selection.");

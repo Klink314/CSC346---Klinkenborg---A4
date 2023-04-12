@@ -5,21 +5,22 @@ namespace AppStoreNS
 {
     public class Google : AppStore
     {
-        public Google (List <App>? app = null, int selected = 0, int paid = 0) : base (app, selected, paid)
+        public Google (int selected = 0, int paid = 0) : base (selected, paid)
         {
-            Apps = app ?? new List <App>();
-
             Selected = selected;
-            
             Paid = paid;
+            Apps = new List <App>
+            {
+                new App("Cubasis 3", 46, 3),
+                new App("FL Studio Mobile", 50, 5),
+                new App("LumaFusion Pro", 57, 1)
+            };
         }
         
         private Google (Google other)
         {
             Apps = other.Apps;
-
             Selected = other.Selected;
-
             Paid = other.Paid;
         }
 

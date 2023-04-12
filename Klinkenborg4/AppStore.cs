@@ -9,9 +9,9 @@ namespace AppStoreNS
         protected int Selected { get; set; }
         protected int Paid { get; set; }
 
-        public AppStore(List <App>? app = null, int selected = 0, int paid = 0)
+        public AppStore(int selected = 0, int paid = 0)
         {
-            Apps = app ?? new List <App>();
+            Apps = new List <App>();
             Selected = selected;
             Paid = paid;
         }
@@ -26,11 +26,32 @@ namespace AppStoreNS
         public void PurchaseApp()
         {
             Selected = 0;
-            WelcomeToStore();
-            SelectApp();
-            PayForApp();
-            ReturnChange();
-            DownloadApp();
+            int userChoice;
+            bool finished = false;
+            do
+            {
+                WelcomeToStore();
+                SelectApp();
+                PayForApp();
+                ReturnChange();
+                DownloadApp();
+                Console.WriteLine("Would you like to leave the store?");
+                Console.WriteLine("1. Continue");
+                Console.WriteLine("2. Exit Store");
+                if (int.TryParse(Console.ReadLine(), out userChoice))
+                {
+                    switch (userChoice)
+                    {
+                        case 1: 
+                        Console.WriteLine("Welcome Back!");
+                        break;
+                        default:
+                        finished = true;
+                        Console.WriteLine("Thank you for using the app store!");
+                        break;
+                    }
+                }
+            }while(!finished);
         }
         
         protected abstract void WelcomeToStore();
@@ -79,6 +100,7 @@ namespace AppStoreNS
                     Console.WriteLine("Make sure to enter enough to cover the cost of the app.");
                 }
             } while(payment < Apps[Selected].Price);
+            Apps[Selected].Available--;
             Paid = payment;
         }
         
@@ -104,7 +126,6 @@ namespace AppStoreNS
             Console.WriteLine("Proper payment has been made, thank you!");
             Console.WriteLine("Downloading your selected app...");
             Console.WriteLine("Download complete.");
-            Console.WriteLine("Thank you for using the app store!");
         }
     }
 }
