@@ -38,7 +38,7 @@ namespace AppStoreNS
                 {
                     do
                     {
-                        Console.WriteLine($"Enter the amount of ${bills[i]} bills: ");
+                        Console.Write($"Enter the amount of ${bills[i]} bills: ");
                         accepted = int.TryParse(Console.ReadLine(), out numberBills);
                     } while (!accepted);
                     payment += bills[i] * numberBills;

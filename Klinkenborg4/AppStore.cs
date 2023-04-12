@@ -68,7 +68,7 @@ namespace AppStoreNS
                 {
                     do
                     {
-                        Console.WriteLine($"Enter the amount of ${bills[i]} bills: ");
+                        Console.Write($"Enter the amount of ${bills[i]} bills: ");
                         accepted = int.TryParse(Console.ReadLine(), out numberBills);
                     } while (!accepted);
                     payment += bills[i] * numberBills;
@@ -92,7 +92,7 @@ namespace AppStoreNS
                 changeGiven [i] = change / possibleChange[i];
                 change %= possibleChange[i];
             }
-            Console.WriteLine("Giving change...\n\n");
+            Console.WriteLine("Giving change...\n");
             for (int i = 0; i < possibleChange.Length; i++)
             {
                 Console.WriteLine($"{possibleChange[i]}: {changeGiven[i]}");

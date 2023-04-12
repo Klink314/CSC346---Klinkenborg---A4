@@ -38,7 +38,7 @@ namespace AppStoreNS
                 changeGiven [i] = change / possibleChange[i];
                 change %= possibleChange[i];
             }
-            Console.WriteLine("Giving change...\n\n");
+            Console.WriteLine("Giving change...\n");
             for (int i = 0; i < possibleChange.Length; i++)
             {
                 Console.WriteLine($"${possibleChange[i]}: {changeGiven[i]}");
