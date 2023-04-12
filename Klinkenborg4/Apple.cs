@@ -5,21 +5,18 @@ namespace AppStoreNS
 {
     public class Apple : AppStore
     {
-        public Apple(int numberOfApps) : base(numberOfApps) 
-        { 
-            numberOfApps = 4;
-            Apps.Add(new App("Final Cut Pro", 54, 3));
-            Apps.Add(new App("Logic Pro", 50, 4));
-            Apps.Add(new App("MainStage", 46, 5));
-            Apps.Add(new App("Pixelmator Pro", 57, 2));
+        public Apple (List <App>? app = null, int selected = 0, int paid = 0) : base (app, selected, paid)
+        {
+            Apps = app ?? new List <App>();
+            Selected = selected;
+            Paid = paid;
         }
         
-        public Apple(int numberOfApps, List<App> apps) : base(numberOfApps) 
-        { 
-            for(int i = 0; i < numberOfApps; i++)
-            {
-                base.Apps.Add(apps[i]);
-            }
+        private Apple (Apple other)
+        {
+            Apps = other.Apps;
+            Selected = other.Selected;
+            Paid = other.Paid;
         }
 
         protected override void WelcomeToStore()

@@ -3,24 +3,24 @@ using System.Collections.Generic;
 
 namespace AppStoreNS
 {
-    /*public class Google : AppStore
+    public class Google : AppStore
     {
-        public Google() : base() 
-        { 
-
-        }
-        
-        public Google(int numberOfApps, List<App> apps) : base(numberOfApps)
+        public Google (List <App>? app = null, int selected = 0, int paid = 0) : base (app, selected, paid)
         {
-            for(int i = 0; i < numberOfApps; i++)
-            {
-                base.Apps.Add(apps[i]);
-            }
+            Apps = app ?? new List <App>();
+
+            Selected = selected;
+            
+            Paid = paid;
         }
         
-        public Google(Google google) : base(google) 
-        { 
+        private Google (Google old)
+        {
+            Apps = old.Apps;
 
+            Selected = old.Selected;
+
+            Paid = old.Paid;
         }
 
         protected override void WelcomeToStore()
@@ -42,5 +42,4 @@ namespace AppStoreNS
             Console.WriteLine($"{ones} $1 bill(s)");
         }
     }
-    */
 }

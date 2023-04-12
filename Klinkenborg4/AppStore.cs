@@ -9,16 +9,18 @@ namespace AppStoreNS
         protected int Selected { get; set; }
         protected int Paid { get; set; }
 
-        public AppStore(int numberOfApps = 0)
+        public AppStore(List <App>? app = null, int selected = 0, int paid = 0)
         {
-            Apps = new List<App>(numberOfApps);
+            Apps = app ?? new List <App>();
+            Selected = selected;
+            Paid = paid;
         }
 
         private AppStore(AppStore other)
         {
+            Apps = other.Apps;
             Selected = other.Selected;
             Paid = other.Paid;
-            Apps = new List<App>(other.Apps);
         }
         
         public void PurchaseApp()
