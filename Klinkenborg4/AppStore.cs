@@ -90,7 +90,7 @@ namespace AppStoreNS
 
         protected virtual void DownloadApp()
         {
-            Console.Writeline("Proper payment has been made, thank you!");
+            Console.WriteLine("Proper payment has been made, thank you!");
             Console.WriteLine("Downloading {app.Name}...");
             Console.WriteLine("Thank you for using the app store!");
         }

@@ -14,13 +14,13 @@ namespace AppStoreNS
             Paid = paid;
         }
         
-        private Google (Google old)
+        private Google (Google other)
         {
-            Apps = old.Apps;
+            Apps = other.Apps;
 
-            Selected = old.Selected;
+            Selected = other.Selected;
 
-            Paid = old.Paid;
+            Paid = other.Paid;
         }
 
         protected override void WelcomeToStore()
@@ -30,7 +30,7 @@ namespace AppStoreNS
         
         protected override void ReturnChange()
         {
-            decmial change = 0.0;
+            int change = 0;
             Console.WriteLine($"Google returns:");
             int tens = (int)(change / 10);
             Console.WriteLine($"{tens} $10 bill(s)");
